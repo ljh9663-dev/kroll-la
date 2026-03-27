@@ -40,7 +40,7 @@ export async function onRequestPost(context) {
     parts: [{ text: String(m.content).slice(0, 2000) }]
   }));
 
-  let geminiRes;
+  let geminiRes, data;
   try {
     geminiRes = await fetch(
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
@@ -54,18 +54,21 @@ export async function onRequestPost(context) {
         })
       }
     );
+    data = await geminiRes.json();
   } catch (err) {
-    return jsonResponse({ error: 'Failed to reach Gemini API' }, 502);
+    console.error('[chat] Gemini fetch/parse error:', err.message);
+    return jsonResponse({ error: 'Failed to reach Gemini API: ' + err.message }, 502);
   }
 
-  const data = await geminiRes.json();
-
   if (!geminiRes.ok) {
-    return jsonResponse({ error: data.error?.message ?? 'Gemini API error' }, 502);
+    const msg = data?.error?.message ?? `Gemini HTTP ${geminiRes.status}`;
+    console.error('[chat] Gemini error response:', msg);
+    return jsonResponse({ error: msg }, 502);
   }
 
   const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
   if (!reply) {
+    console.error('[chat] Unexpected Gemini shape:', JSON.stringify(data).slice(0, 300));
     return jsonResponse({ error: 'Empty response from Gemini' }, 502);
   }
 
