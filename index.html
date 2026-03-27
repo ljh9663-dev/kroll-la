@@ -718,5 +718,180 @@
   </div>
 </footer>
 
+<!-- Floating AI Chat Widget -->
+<button id="chat-toggle"
+  class="fixed bottom-6 right-6 z-[200] w-16 h-16 bg-primary-gradient rounded-full shadow-2xl shadow-primary/40 flex items-center justify-center hover:scale-110 active:scale-95 transition-all duration-200"
+  aria-label="Chat with K-Roll AI">
+  <span class="material-symbols-outlined text-white text-2xl" id="chat-icon">chat</span>
+</button>
+
+<div id="chat-window"
+  class="fixed bottom-[88px] right-6 z-[200] hidden flex-col rounded-3xl overflow-hidden shadow-2xl border border-white/10"
+  style="width: min(360px, calc(100vw - 1.5rem)); max-height: 75vh;">
+
+  <!-- Header -->
+  <div class="bg-black/85 backdrop-blur-xl px-5 py-4 flex items-center justify-between flex-shrink-0">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center flex-shrink-0">
+        <span class="material-symbols-outlined text-white text-lg">auto_awesome</span>
+      </div>
+      <div>
+        <div class="font-bold text-sm text-white font-label">K-Roll Assistant</div>
+        <div class="flex items-center gap-1.5 mt-0.5">
+          <span class="w-1.5 h-1.5 rounded-full bg-green-400 inline-block"></span>
+          <span class="text-[10px] uppercase tracking-widest text-secondary-fixed-dim font-label">Gemini AI</span>
+        </div>
+      </div>
+    </div>
+    <button id="chat-close" class="text-white/40 hover:text-white transition-colors">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+
+  <!-- Messages -->
+  <div id="chat-messages"
+    class="bg-black/75 backdrop-blur-xl overflow-y-auto p-4 space-y-3 flex-1"
+    style="min-height: 260px; max-height: calc(75vh - 148px);">
+  </div>
+
+  <!-- Input -->
+  <div class="bg-black/85 backdrop-blur-xl px-4 py-3 border-t border-white/10 flex-shrink-0">
+    <div class="flex gap-2 items-center">
+      <input
+        id="chat-input"
+        type="text"
+        placeholder="Ask about our menu..."
+        maxlength="500"
+        class="flex-grow bg-white/5 border border-white/10 rounded-full px-4 py-2.5 text-sm text-white placeholder-white/30 focus:outline-none focus:border-primary/60 font-body transition-colors" />
+      <button
+        id="chat-send"
+        class="w-10 h-10 bg-primary rounded-full flex items-center justify-center hover:bg-primary-container transition-colors flex-shrink-0 disabled:opacity-30 disabled:cursor-not-allowed"
+        disabled>
+        <span class="material-symbols-outlined text-white text-sm">send</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const toggle = document.getElementById('chat-toggle');
+  const chatWindow = document.getElementById('chat-window');
+  const chatClose = document.getElementById('chat-close');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatInput = document.getElementById('chat-input');
+  const chatSend = document.getElementById('chat-send');
+  const chatIcon = document.getElementById('chat-icon');
+
+  let history = [];
+  let isOpen = false;
+  let initialized = false;
+  let busy = false;
+
+  function openChat() {
+    isOpen = true;
+    chatWindow.classList.remove('hidden');
+    chatWindow.classList.add('flex');
+    chatIcon.textContent = 'close';
+    if (!initialized) {
+      appendMessage('assistant', "Hey! I'm your K-Roll LA assistant 🍱 Ask me anything about our menu, ingredients, or how to order. I speak any language!");
+      initialized = true;
+    }
+    setTimeout(() => chatInput.focus(), 80);
+  }
+
+  function closeChat() {
+    isOpen = false;
+    chatWindow.classList.add('hidden');
+    chatWindow.classList.remove('flex');
+    chatIcon.textContent = 'chat';
+  }
+
+  toggle.addEventListener('click', () => isOpen ? closeChat() : openChat());
+  chatClose.addEventListener('click', closeChat);
+
+  chatInput.addEventListener('input', () => {
+    chatSend.disabled = busy || chatInput.value.trim() === '';
+  });
+
+  chatInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && !e.shiftKey && !chatSend.disabled) sendMessage();
+  });
+
+  chatSend.addEventListener('click', sendMessage);
+
+  function appendMessage(role, text) {
+    const isUser = role === 'user';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flex ' + (isUser ? 'justify-end' : 'justify-start');
+    const bubble = document.createElement('div');
+    bubble.className = 'px-4 py-3 rounded-2xl text-sm font-body leading-relaxed max-w-[84%] ' +
+      (isUser
+        ? 'rounded-tr-none bg-primary/30 text-white'
+        : 'rounded-tl-none bg-white/10 text-white/90');
+    bubble.textContent = text;
+    wrapper.appendChild(bubble);
+    chatMessages.appendChild(wrapper);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function showTyping() {
+    const el = document.createElement('div');
+    el.id = 'typing-indicator';
+    el.className = 'flex justify-start';
+    el.innerHTML = '<div class="bg-white/10 px-4 py-3 rounded-2xl rounded-tl-none flex gap-1 items-center">' +
+      '<span class="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce" style="animation-delay:0ms"></span>' +
+      '<span class="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce" style="animation-delay:160ms"></span>' +
+      '<span class="w-1.5 h-1.5 bg-white/50 rounded-full animate-bounce" style="animation-delay:320ms"></span>' +
+      '</div>';
+    chatMessages.appendChild(el);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage() {
+    const text = chatInput.value.trim();
+    if (!text || busy) return;
+
+    busy = true;
+    chatInput.value = '';
+    chatSend.disabled = true;
+    chatInput.disabled = true;
+
+    appendMessage('user', text);
+    history.push({ role: 'user', content: text });
+    showTyping();
+
+    try {
+      const res = await fetch('/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ messages: history })
+      });
+      const data = await res.json();
+      removeTyping();
+      if (data.reply) {
+        appendMessage('assistant', data.reply);
+        history.push({ role: 'assistant', content: data.reply });
+      } else {
+        appendMessage('assistant', 'Sorry, something went wrong. Please try again!');
+      }
+    } catch {
+      removeTyping();
+      appendMessage('assistant', 'Connection error. Please check your internet and try again.');
+    }
+
+    busy = false;
+    chatInput.disabled = false;
+    chatSend.disabled = chatInput.value.trim() === '';
+    chatInput.focus();
+  }
+})();
+</script>
+
 </body>
 </html>
