@@ -106,19 +106,68 @@
       <span class="text-tertiary">K-Roll</span> <span class="text-primary italic">LA</span>
     </div>
     <div class="hidden md:flex items-center gap-10">
-      <a class="text-primary dark:text-red-400 font-bold border-b-2 border-red-700 font-headline italic text-lg" href="#">Our Story</a>
-      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">How It Works</a>
-      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">Menu</a>
-      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">AI Chat</a>
-      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">Partners</a>
+      <a class="text-primary dark:text-red-400 font-bold border-b-2 border-red-700 font-headline italic text-lg" href="#our-story">Our Story</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#how-it-works">How It Works</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#menu">Menu</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#ai-chat">AI Chat</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#partners">Partners</a>
     </div>
     <div class="flex items-center gap-4">
-      <button class="bg-primary-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-wider hover:opacity-90 transition-all transform hover:scale-105">
+      <button class="bg-primary-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-wider hover:opacity-90 transition-all transform hover:scale-105 hidden md:block">
         Order Now
+      </button>
+      <!-- Hamburger button (mobile only) -->
+      <button id="mobile-menu-btn" class="md:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 rounded-lg hover:bg-surface-container transition-colors" aria-label="메뉴 열기" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="block w-6 h-0.5 bg-on-surface transition-all duration-300" id="ham-line1"></span>
+        <span class="block w-6 h-0.5 bg-on-surface transition-all duration-300" id="ham-line2"></span>
+        <span class="block w-6 h-0.5 bg-on-surface transition-all duration-300" id="ham-line3"></span>
       </button>
     </div>
   </div>
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="md:hidden hidden glass-nav border-t border-outline-variant/20 px-8 py-6 flex flex-col gap-5">
+    <a class="text-primary font-bold font-headline italic text-xl" href="#our-story" onclick="closeMobileMenu()">Our Story</a>
+    <a class="text-stone-600 font-headline italic text-xl hover:text-red-700 transition-colors" href="#how-it-works" onclick="closeMobileMenu()">How It Works</a>
+    <a class="text-stone-600 font-headline italic text-xl hover:text-red-700 transition-colors" href="#menu" onclick="closeMobileMenu()">Menu</a>
+    <a class="text-stone-600 font-headline italic text-xl hover:text-red-700 transition-colors" href="#ai-chat" onclick="closeMobileMenu()">AI Chat</a>
+    <a class="text-stone-600 font-headline italic text-xl hover:text-red-700 transition-colors" href="#partners" onclick="closeMobileMenu()">Partners</a>
+    <button class="bg-primary-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-wider hover:opacity-90 transition-all mt-2 self-start">
+      Order Now
+    </button>
+  </div>
 </nav>
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const line1 = document.getElementById('ham-line1');
+  const line2 = document.getElementById('ham-line2');
+  const line3 = document.getElementById('ham-line3');
+
+  menuBtn.addEventListener('click', () => {
+    const isOpen = !mobileMenu.classList.contains('hidden');
+    if (isOpen) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  });
+
+  function openMobileMenu() {
+    mobileMenu.classList.remove('hidden');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    line1.style.transform = 'translateY(6.5px) rotate(45deg)';
+    line2.style.opacity = '0';
+    line3.style.transform = 'translateY(-6.5px) rotate(-45deg)';
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    line1.style.transform = '';
+    line2.style.opacity = '';
+    line3.style.transform = '';
+  }
+</script>
 
 <!-- Hero Section -->
 <section class="relative pt-32 pb-20 px-8 max-w-screen-2xl mx-auto min-h-screen flex items-center">
@@ -174,7 +223,7 @@
 </div>
 
 <!-- Our Story -->
-<section class="py-32 px-8 max-w-screen-2xl mx-auto">
+<section id="our-story" class="py-32 px-8 max-w-screen-2xl mx-auto">
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
     <div class="bg-surface-container-low p-12 rounded-3xl relative overflow-hidden h-[500px] flex items-center justify-center">
       <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
@@ -210,7 +259,7 @@
 </section>
 
 <!-- How It Works -->
-<section class="py-32 bg-surface-container-lowest">
+<section id="how-it-works" class="py-32 bg-surface-container-lowest">
   <div class="max-w-screen-2xl mx-auto px-8">
     <div class="text-center mb-24 space-y-4">
       <h2 class="text-5xl font-headline font-bold">Five steps to your <span class="italic text-primary">perfect roll.</span></h2>
@@ -273,7 +322,7 @@
 </section>
 
 <!-- Menu Grid -->
-<section class="py-32 px-8 max-w-screen-2xl mx-auto">
+<section id="menu" class="py-32 px-8 max-w-screen-2xl mx-auto">
   <div class="flex justify-between items-end mb-16">
     <div class="space-y-4">
       <span class="font-label text-primary uppercase tracking-widest">Our Selection</span>
@@ -365,7 +414,7 @@
 </section>
 
 <!-- AI Chatbot Section -->
-<section class="bg-tertiary text-surface py-32 overflow-hidden">
+<section id="ai-chat" class="bg-tertiary text-surface py-32 overflow-hidden">
   <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
     <div class="space-y-12">
       <h2 class="text-6xl font-headline font-bold leading-tight">Order in your <br/> <span class="italic text-tertiary-fixed">own language.</span></h2>
@@ -445,7 +494,7 @@
 </section>
 
 <!-- Partners Section -->
-<section class="py-32 bg-surface">
+<section id="partners" class="py-32 bg-surface">
   <div class="max-w-screen-2xl mx-auto px-8 text-center">
     <div class="space-y-4 mb-20">
       <h2 class="text-5xl font-headline font-bold">More than a restaurant. <span class="italic text-primary">A platform.</span></h2>
