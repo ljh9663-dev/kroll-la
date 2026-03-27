@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>K-Roll LA | The Heritage Technologist</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "tertiary-fixed-dim": "#dec1af",
+          "error": "#ba1a1a",
+          "on-secondary-fixed": "#111f0a",
+          "on-primary-fixed": "#410007",
+          "tertiary-container": "#776052",
+          "primary": "#9e001f",
+          "surface-container-lowest": "#ffffff",
+          "secondary": "#526348",
+          "on-surface-variant": "#5c403f",
+          "on-error": "#ffffff",
+          "on-background": "#1c1c19",
+          "on-tertiary-fixed-variant": "#574335",
+          "tertiary-fixed": "#fbddca",
+          "on-secondary-fixed-variant": "#3b4b32",
+          "error-container": "#ffdad6",
+          "surface-dim": "#dcdad5",
+          "secondary-fixed-dim": "#b9ccab",
+          "inverse-surface": "#31302d",
+          "on-surface": "#1c1c19",
+          "inverse-primary": "#ffb3b1",
+          "surface-variant": "#e5e2dd",
+          "primary-fixed": "#ffdad8",
+          "surface": "#fcf9f4",
+          "outline": "#906f6e",
+          "on-tertiary": "#ffffff",
+          "surface-container-highest": "#e5e2dd",
+          "on-tertiary-container": "#fbddca",
+          "on-tertiary-fixed": "#28180d",
+          "on-secondary": "#ffffff",
+          "on-secondary-container": "#58694e",
+          "on-error-container": "#93000a",
+          "outline-variant": "#e5bdbb",
+          "surface-container-high": "#ebe8e3",
+          "inverse-on-surface": "#f3f0eb",
+          "surface-tint": "#bf0229",
+          "on-primary-fixed-variant": "#92001c",
+          "primary-container": "#c8102e",
+          "surface-container-low": "#f6f3ee",
+          "surface-bright": "#fcf9f4",
+          "secondary-container": "#d5e9c6",
+          "background": "#fcf9f4",
+          "on-primary": "#ffffff",
+          "on-primary-container": "#ffdad8",
+          "surface-container": "#f0ede9",
+          "secondary-fixed": "#d5e9c6",
+          "tertiary": "#5d483b",
+          "primary-fixed-dim": "#ffb3b1"
+        },
+        fontFamily: {
+          "headline": ["Noto Serif"],
+          "body": ["Plus Jakarta Sans"],
+          "label": ["Space Grotesk"]
+        },
+        borderRadius: {
+          "DEFAULT": "0.25rem",
+          "lg": "0.5rem",
+          "xl": "1.5rem",
+          "full": "9999px"
+        },
+      },
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+  }
+  .glass-nav {
+    background-color: rgba(252, 249, 244, 0.92);
+    backdrop-filter: blur(12px);
+  }
+  .bg-primary-gradient {
+    background: linear-gradient(135deg, #9e001f 0%, #c8102e 100%);
+  }
+  .organic-image-bleed {
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+</style>
+</head>
+<body class="bg-surface text-on-surface font-body antialiased">
+
+<!-- TopNavBar -->
+<nav class="glass-nav fixed top-0 left-0 right-0 z-50">
+  <div class="max-w-screen-2xl mx-auto flex justify-between items-center px-8 py-4">
+    <div class="text-2xl font-headline font-bold tracking-tight">
+      <span class="text-tertiary">K-Roll</span> <span class="text-primary italic">LA</span>
+    </div>
+    <div class="hidden md:flex items-center gap-10">
+      <a class="text-primary dark:text-red-400 font-bold border-b-2 border-red-700 font-headline italic text-lg" href="#">Our Story</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">How It Works</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">Menu</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">AI Chat</a>
+      <a class="text-stone-600 hover:text-red-700 transition-colors font-headline italic text-lg" href="#">Partners</a>
+    </div>
+    <div class="flex items-center gap-4">
+      <button class="bg-primary-gradient text-on-primary px-8 py-3 rounded-full font-label font-bold tracking-wider hover:opacity-90 transition-all transform hover:scale-105">
+        Order Now
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative pt-32 pb-20 px-8 max-w-screen-2xl mx-auto min-h-screen flex items-center">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center w-full">
+    <div class="space-y-8">
+      <h1 class="text-7xl lg:text-8xl font-headline font-bold leading-tight text-on-surface">
+        You pick it. <br/>
+        The machine <br/>
+        <span class="text-primary italic">rolls it.</span>
+      </h1>
+      <p class="text-xl text-tertiary max-w-lg leading-relaxed">
+        Experience the future of Korean street food. Hyper-personalized kimbap assembled by precision robotics, powered by AI that speaks your language.
+      </p>
+      <div class="flex flex-wrap gap-6 pt-4">
+        <button class="bg-primary-gradient text-on-primary px-10 py-5 rounded-xl font-label text-lg font-bold flex items-center gap-3 shadow-xl shadow-primary/10">
+          Build Your Roll
+          <span class="material-symbols-outlined">arrow_forward</span>
+        </button>
+        <button class="border-2 border-tertiary text-tertiary px-10 py-5 rounded-xl font-label text-lg font-bold hover:bg-tertiary hover:text-surface transition-all">
+          See the Menu
+        </button>
+      </div>
+    </div>
+    <div class="relative group">
+      <div class="absolute -inset-4 bg-secondary-container/30 blur-3xl rounded-full"></div>
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl transform transition-transform group-hover:scale-[1.02] duration-500">
+        <img alt="Close-up of artisan Korean kimbap rolls arranged artistically on a minimalist ceramic plate with warm morning sunlight and soft shadows" class="w-full h-[600px] object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDU45c-bHRV3AAqpSW6SIExA3yiUtwawuncihsUXUHmiKKFsNDglKuqUomiN_iC0Du6719cVOH2f7eCs68mAFxzl7TMqR8T-Xr8fHyb0S2GSJeaP8lQrvf6YXNC3tKqsX90DLhZz2ErweS0uwV6VdrsJGrKA3LoWxctaZ6zbj8gAlTFw99mtfPrOMSF-Ppp8wXJKzkxMKE7_8MR-0VHRNg0JELL8xdWl5tnXpYWmVsRvhvJVqiIndy7ZLlMMY3lZPRO9oObsRpXXrA"/>
+        <div class="absolute top-8 right-8 bg-surface/90 backdrop-blur px-6 py-3 rounded-full shadow-lg border border-outline-variant/20 flex items-center gap-3">
+          <span class="material-symbols-outlined text-secondary">translate</span>
+          <span class="font-label text-sm font-bold uppercase tracking-widest text-on-surface">5 languages supported</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee Strip -->
+<div class="bg-tertiary py-6 overflow-hidden flex items-center whitespace-nowrap">
+  <div class="flex animate-[marquee_30s_linear_infinite] items-center gap-12 text-surface-container-low font-label uppercase tracking-[0.2em] text-sm">
+    <span>Custom Kimbap</span> <span class="text-primary text-xl">◆</span>
+    <span>AI-Powered Ordering</span> <span class="text-primary text-xl">◆</span>
+    <span>Fresh · Fast · Yours</span> <span class="text-primary text-xl">◆</span>
+    <span>Koreatown LA</span> <span class="text-primary text-xl">◆</span>
+    <span>Gluten-Free Options</span> <span class="text-primary text-xl">◆</span>
+    <span>Vegan Friendly</span> <span class="text-primary text-xl">◆</span>
+    <span>Custom Kimbap</span> <span class="text-primary text-xl">◆</span>
+    <span>AI-Powered Ordering</span> <span class="text-primary text-xl">◆</span>
+    <span>Fresh · Fast · Yours</span> <span class="text-primary text-xl">◆</span>
+    <span>Koreatown LA</span> <span class="text-primary text-xl">◆</span>
+    <span>Gluten-Free Options</span> <span class="text-primary text-xl">◆</span>
+    <span>Vegan Friendly</span> <span class="text-primary text-xl">◆</span>
+  </div>
+</div>
+
+<!-- Our Story -->
+<section class="py-32 px-8 max-w-screen-2xl mx-auto">
+  <div class="grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <div class="bg-surface-container-low p-12 rounded-3xl relative overflow-hidden h-[500px] flex items-center justify-center">
+      <div class="absolute inset-0 opacity-10 bg-[url('https://www.transparenttextures.com/patterns/natural-paper.png')]"></div>
+      <img alt="Artistic studio shot of fresh ingredients like carrots, spinach, and roasted seaweed floating in an organized composition against a warm cream background" class="w-3/4 h-3/4 object-contain drop-shadow-2xl" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5WWTViymgaHWxF3V5dYVXPNRlnxsejMnOTB__5pXnGVx0-UXaSvle9EHKk6PPxC4VHpIz9VtPonyAmdIZJ6lRCmN17saD0MOaj5NJhuVlr5z2kmhgDPiLPVzjILurbV1nhZrrw6Z9KC3yWyfkfU5U0Sic3glNhbu7nF3klK6TiJXBQ2Ilp6st9KN54sZ0xo6zWXrQcMmrYm7xlFzBQSXTqVYhiQL6qOvttceWVl59IJ7AEV2K1HHSM8aX-zzNUWjTIk_YjObSIvQ"/>
+    </div>
+    <div class="space-y-8">
+      <span class="font-label text-secondary uppercase tracking-widest">Our Story</span>
+      <p class="text-2xl font-headline italic text-secondary-fixed-variant leading-relaxed">
+        Where Korea meets California
+      </p>
+      <h2 class="text-6xl font-headline font-bold text-on-surface leading-tight">
+        Simple food, <span class="text-primary italic">reimagined.</span>
+      </h2>
+      <p class="text-lg text-tertiary leading-relaxed">
+        K-Roll LA was born from a simple question: How can we make the labor-intensive art of Kimbap accessible to a fast-paced world without losing its soul? Our proprietary rolling technology ensures the perfect rice-to-filling ratio every single time.
+      </p>
+      <div class="grid grid-cols-3 gap-8 pt-8">
+        <div class="space-y-2">
+          <div class="text-4xl font-label font-bold text-on-surface">05</div>
+          <div class="text-sm font-label uppercase text-tertiary tracking-tighter">Languages Spoken</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-label font-bold text-on-surface">1k+</div>
+          <div class="text-sm font-label uppercase text-tertiary tracking-tighter">Combinations</div>
+        </div>
+        <div class="space-y-2">
+          <div class="text-4xl font-label font-bold text-on-surface">45s</div>
+          <div class="text-sm font-label uppercase text-tertiary tracking-tighter">Prep Speed</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section class="py-32 bg-surface-container-lowest">
+  <div class="max-w-screen-2xl mx-auto px-8">
+    <div class="text-center mb-24 space-y-4">
+      <h2 class="text-5xl font-headline font-bold">Five steps to your <span class="italic text-primary">perfect roll.</span></h2>
+      <p class="text-tertiary font-label uppercase tracking-widest">A seamless union of culinary art and robotics</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-12 relative">
+      <div class="hidden md:block absolute top-12 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/20 to-transparent"></div>
+      <div class="relative space-y-6 text-center">
+        <div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center mx-auto shadow-sm border border-outline-variant/10 relative z-10">
+          <span class="material-symbols-outlined text-3xl text-primary">smart_toy</span>
+          <div class="absolute -top-2 -right-2 bg-primary text-surface w-8 h-8 rounded-full flex items-center justify-center font-label text-xs font-bold">01</div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-headline font-bold text-xl">AI Orders</h4>
+          <p class="text-sm text-tertiary">Speak or type in any language. Our AI understands your cravings.</p>
+        </div>
+      </div>
+      <div class="relative space-y-6 text-center">
+        <div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center mx-auto shadow-sm border border-outline-variant/10 relative z-10">
+          <span class="material-symbols-outlined text-3xl text-primary">waves</span>
+          <div class="absolute -top-2 -right-2 bg-primary text-surface w-8 h-8 rounded-full flex items-center justify-center font-label text-xs font-bold">02</div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-headline font-bold text-xl">Rice Spreads</h4>
+          <p class="text-sm text-tertiary">Evenly distributed seasoned rice, perfectly tempered for texture.</p>
+        </div>
+      </div>
+      <div class="relative space-y-6 text-center">
+        <div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center mx-auto shadow-sm border border-outline-variant/10 relative z-10">
+          <span class="material-symbols-outlined text-3xl text-primary">trolley</span>
+          <div class="absolute -top-2 -right-2 bg-primary text-surface w-8 h-8 rounded-full flex items-center justify-center font-label text-xs font-bold">03</div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-headline font-bold text-xl">You Choose</h4>
+          <p class="text-sm text-tertiary">Select proteins and veggies. 1,000+ possible combinations.</p>
+        </div>
+      </div>
+      <div class="relative space-y-6 text-center">
+        <div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center mx-auto shadow-sm border border-outline-variant/10 relative z-10">
+          <span class="material-symbols-outlined text-3xl text-primary">settings_b_roll</span>
+          <div class="absolute -top-2 -right-2 bg-primary text-surface w-8 h-8 rounded-full flex items-center justify-center font-label text-xs font-bold">04</div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-headline font-bold text-xl">Machine Rolls</h4>
+          <p class="text-sm text-tertiary">Precision rolling at 450 PSI for the ideal structural integrity.</p>
+        </div>
+      </div>
+      <div class="relative space-y-6 text-center">
+        <div class="w-24 h-24 bg-surface rounded-full flex items-center justify-center mx-auto shadow-sm border border-outline-variant/10 relative z-10">
+          <span class="material-symbols-outlined text-3xl text-primary">takeout_dining</span>
+          <div class="absolute -top-2 -right-2 bg-primary text-surface w-8 h-8 rounded-full flex items-center justify-center font-label text-xs font-bold">05</div>
+        </div>
+        <div class="space-y-2">
+          <h4 class="font-headline font-bold text-xl">Packed &amp; Gone</h4>
+          <p class="text-sm text-tertiary">Eco-friendly packaging, sliced and ready for your day.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Menu Grid -->
+<section class="py-32 px-8 max-w-screen-2xl mx-auto">
+  <div class="flex justify-between items-end mb-16">
+    <div class="space-y-4">
+      <span class="font-label text-primary uppercase tracking-widest">Our Selection</span>
+      <h2 class="text-6xl font-headline font-bold">Curated <span class="italic">Rolls</span></h2>
+    </div>
+    <a class="text-tertiary font-label font-bold border-b border-tertiary pb-1 hover:text-primary hover:border-primary transition-colors" href="#">View All Menus</a>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all relative overflow-hidden ring-2 ring-primary/10">
+      <div class="absolute top-6 right-6 bg-primary-container text-on-primary-container px-4 py-1 rounded-full text-xs font-label font-bold uppercase tracking-widest">Best Seller</div>
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">🥩</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">LA Galbi Roll</h3>
+      <p class="text-tertiary text-sm mb-6">Sweet soy-marinated short rib, pickled radish, and grilled scallions.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$15.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">🍱</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">The Classic</h3>
+      <p class="text-tertiary text-sm mb-6">Traditional ham, egg, cucumber, carrot, and burdock root.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$12.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">🔥</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">Spicy Tuna</h3>
+      <p class="text-tertiary text-sm mb-6">Fresh ahi tuna tossed in our house gochujang aioli.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$14.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">🥗</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">Veggie Fresh</h3>
+      <p class="text-tertiary text-sm mb-6">Avocado, purple cabbage, and organic baby spinach.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$11.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">🍗</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">K-BBQ Chicken</h3>
+      <p class="text-tertiary text-sm mb-6">Grilled chicken thighs with a smoky BBQ glaze.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$13.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+    <div class="group bg-surface-container-lowest rounded-3xl p-8 shadow-sm hover:shadow-xl transition-all">
+      <div class="h-48 mb-8 flex items-center justify-center bg-surface rounded-2xl">
+        <span class="text-8xl group-hover:scale-110 transition-transform duration-500">💪</span>
+      </div>
+      <h3 class="text-3xl font-headline font-bold mb-2">Protein Power</h3>
+      <p class="text-tertiary text-sm mb-6">Double protein, keto-friendly (no rice) available upon request.</p>
+      <div class="flex justify-between items-center">
+        <span class="text-2xl font-label font-bold text-primary">$16.00</span>
+        <button class="bg-surface-container-high p-3 rounded-full hover:bg-primary hover:text-surface transition-colors">
+          <span class="material-symbols-outlined">add</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI Chatbot Section -->
+<section class="bg-tertiary text-surface py-32 overflow-hidden">
+  <div class="max-w-screen-2xl mx-auto px-8 grid grid-cols-1 lg:grid-cols-2 gap-24 items-center">
+    <div class="space-y-12">
+      <h2 class="text-6xl font-headline font-bold leading-tight">Order in your <br/> <span class="italic text-tertiary-fixed">own language.</span></h2>
+      <div class="grid grid-cols-1 gap-8">
+        <div class="flex items-start gap-6">
+          <div class="w-14 h-14 rounded-full bg-surface/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-2xl">public</span>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-headline font-bold text-xl">Global Fluency</h4>
+            <p class="text-surface-variant/80">Our AI speaks English, Korean, Spanish, Mandarin, and Japanese natively.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-6">
+          <div class="w-14 h-14 rounded-full bg-surface/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-2xl">no_accounts</span>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-headline font-bold text-xl">Frictionless Experience</h4>
+            <p class="text-surface-variant/80">No need for apps or accounts. Just talk to the kiosk or our web agent.</p>
+          </div>
+        </div>
+        <div class="flex items-start gap-6">
+          <div class="w-14 h-14 rounded-full bg-surface/10 flex items-center justify-center flex-shrink-0">
+            <span class="material-symbols-outlined text-2xl">skillet</span>
+          </div>
+          <div class="space-y-2">
+            <h4 class="font-headline font-bold text-xl">Dietary Awareness</h4>
+            <p class="text-surface-variant/80">"Make it vegan" or "extra spice" – the machine understands nuance.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="relative">
+      <div class="bg-black/40 backdrop-blur-2xl rounded-3xl p-8 border border-white/10 shadow-2xl space-y-6">
+        <div class="flex items-center gap-4 mb-8">
+          <div class="w-10 h-10 rounded-full bg-primary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-white">auto_awesome</span>
+          </div>
+          <div>
+            <div class="font-bold text-sm">K-Roll Assistant</div>
+            <div class="text-[10px] uppercase tracking-widest text-secondary-fixed-dim">AI Powered</div>
+          </div>
+        </div>
+        <div class="space-y-4">
+          <div class="flex justify-end">
+            <div class="bg-primary/20 p-4 rounded-2xl rounded-tr-none max-w-[80%] text-sm">
+              안녕하세요, 갈비 김밥 하나 주세요. (Hello, one Galbi Kimbap please.)
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="bg-white/10 p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm">
+              Choice selected: LA Galbi Roll. Would you like to add avocado or extra sesame oil?
+            </div>
+          </div>
+          <div class="flex justify-end">
+            <div class="bg-primary/20 p-4 rounded-2xl rounded-tr-none max-w-[80%] text-sm">
+              ¡Sí, con aguacate por favor! (Yes, with avocado please!)
+            </div>
+          </div>
+          <div class="flex justify-start">
+            <div class="bg-white/10 p-4 rounded-2xl rounded-tl-none max-w-[80%] text-sm">
+              Entendido. Una orden de Galbi Roll con aguacate. Total: $17.50. ¿Deseas pagar ahora?
+            </div>
+          </div>
+        </div>
+        <div class="pt-6 border-t border-white/10 flex gap-4">
+          <div class="flex-grow bg-white/5 rounded-full px-6 py-3 text-xs text-white/40">Type your request...</div>
+          <div class="bg-primary-container w-10 h-10 rounded-full flex items-center justify-center">
+            <span class="material-symbols-outlined text-sm">send</span>
+          </div>
+        </div>
+      </div>
+      <div class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-primary/20 blur-[120px] rounded-full"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Partners Section -->
+<section class="py-32 bg-surface">
+  <div class="max-w-screen-2xl mx-auto px-8 text-center">
+    <div class="space-y-4 mb-20">
+      <h2 class="text-5xl font-headline font-bold">More than a restaurant. <span class="italic text-primary">A platform.</span></h2>
+      <p class="text-tertiary font-label uppercase tracking-widest">Join the heritage technology revolution</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-left">
+      <div class="group bg-surface-container-low p-10 rounded-3xl hover:bg-surface-container-high transition-colors">
+        <span class="material-symbols-outlined text-4xl text-primary mb-6">trending_up</span>
+        <h4 class="text-2xl font-headline font-bold mb-4">Investors</h4>
+        <p class="text-tertiary mb-8">Fueling the next generation of robotic food automation and global expansion.</p>
+        <a class="font-label text-sm font-bold flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+          LEARN MORE <span class="material-symbols-outlined text-sm">north_east</span>
+        </a>
+      </div>
+      <div class="group bg-surface-container-low p-10 rounded-3xl hover:bg-surface-container-high transition-colors">
+        <span class="material-symbols-outlined text-4xl text-primary mb-6">handshake</span>
+        <h4 class="text-2xl font-headline font-bold mb-4">Partners</h4>
+        <p class="text-tertiary mb-8">From ingredient sourcing to tech integration, we build meaningful alliances.</p>
+        <a class="font-label text-sm font-bold flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+          JOIN US <span class="material-symbols-outlined text-sm">north_east</span>
+        </a>
+      </div>
+      <div class="group bg-surface-container-low p-10 rounded-3xl hover:bg-surface-container-high transition-colors">
+        <span class="material-symbols-outlined text-4xl text-primary mb-6">restaurant</span>
+        <h4 class="text-2xl font-headline font-bold mb-4">Catering</h4>
+        <p class="text-tertiary mb-8">Bring the K-Roll robot to your corporate event or private party.</p>
+        <a class="font-label text-sm font-bold flex items-center gap-2 group-hover:text-primary transition-colors" href="#">
+          ENQUIRE <span class="material-symbols-outlined text-sm">north_east</span>
+        </a>
+      </div>
+    </div>
+    <div class="mt-20">
+      <button class="bg-primary text-surface px-12 py-5 rounded-full font-label font-bold tracking-widest hover:bg-primary-container transition-all flex items-center gap-3 mx-auto">
+        Get in Touch <span class="material-symbols-outlined">arrow_right_alt</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Order CTA Banner -->
+<section class="bg-primary-container py-32 overflow-hidden relative">
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-0 left-0 w-96 h-96 bg-white blur-[100px] rounded-full -translate-x-1/2 -translate-y-1/2"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-white blur-[100px] rounded-full translate-x-1/2 translate-y-1/2"></div>
+  </div>
+  <div class="max-w-screen-2xl mx-auto px-8 relative z-10 text-center">
+    <h2 class="text-7xl md:text-8xl font-headline font-bold text-surface mb-16 leading-tight">Ready to <span class="italic">roll?</span></h2>
+    <div class="flex flex-wrap justify-center gap-8">
+      <button class="bg-surface text-primary px-12 py-6 rounded-xl font-label text-lg font-bold hover:bg-surface-container-low transition-all shadow-xl">Order Online</button>
+      <button class="bg-surface text-primary px-12 py-6 rounded-xl font-label text-lg font-bold hover:bg-surface-container-low transition-all shadow-xl">Find Us</button>
+      <button class="bg-surface text-primary px-12 py-6 rounded-xl font-label text-lg font-bold hover:bg-surface-container-low transition-all shadow-xl">Chat with AI</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-tertiary pt-20 pb-10">
+  <div class="max-w-screen-2xl mx-auto px-12 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+    <div class="space-y-8">
+      <div class="text-4xl font-headline italic font-bold text-surface-container-low">K-Roll <span class="text-primary-fixed-dim">LA</span></div>
+      <p class="text-stone-400 font-label text-sm leading-relaxed uppercase tracking-widest">
+        The Heritage Technologist. <br/>
+        Crafting the future of <br/>
+        street food.
+      </p>
+      <div class="flex gap-4">
+        <div class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-white transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-lg">language</span>
+        </div>
+        <div class="w-10 h-10 rounded-full border border-stone-700 flex items-center justify-center text-stone-400 hover:text-white hover:border-white transition-all cursor-pointer">
+          <span class="material-symbols-outlined text-lg">share</span>
+        </div>
+      </div>
+    </div>
+    <div class="space-y-6">
+      <h5 class="font-label text-surface font-bold text-xs uppercase tracking-[0.3em]">Company</h5>
+      <ul class="space-y-4">
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Our Story</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">How It Works</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Investors</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Careers</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h5 class="font-label text-surface font-bold text-xs uppercase tracking-[0.3em]">Services</h5>
+      <ul class="space-y-4">
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Menu</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">AI Chat</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Partners</a></li>
+        <li><a class="text-stone-400 hover:text-orange-50 transition-colors font-label text-sm uppercase tracking-wider" href="#">Corporate Catering</a></li>
+      </ul>
+    </div>
+    <div class="space-y-6">
+      <h5 class="font-label text-surface font-bold text-xs uppercase tracking-[0.3em]">Contact</h5>
+      <p class="text-stone-400 font-label text-sm uppercase tracking-widest">
+        3500 Wilshire Blvd <br/>
+        Los Angeles, CA 90010
+      </p>
+      <p class="text-stone-400 font-label text-sm uppercase tracking-widest">
+        hello@kroll-la.com <br/>
+        (213) 555-ROLL
+      </p>
+    </div>
+  </div>
+  <div class="max-w-screen-2xl mx-auto px-12 pt-10 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-6">
+    <p class="text-stone-500 font-label text-[10px] uppercase tracking-widest">© 2024 K-Roll LA. The Heritage Technologist.</p>
+    <div class="flex gap-8">
+      <a class="text-stone-500 hover:text-white transition-colors font-label text-[10px] uppercase tracking-widest" href="#">Privacy Policy</a>
+      <a class="text-stone-500 hover:text-white transition-colors font-label text-[10px] uppercase tracking-widest" href="#">Terms of Service</a>
+      <div class="flex items-center gap-2 text-primary-fixed-dim font-label text-[10px] uppercase tracking-widest">
+        <span class="material-symbols-outlined text-xs">translate</span>
+        English (US)
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
